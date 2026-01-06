@@ -1,0 +1,17 @@
+[
+  {"question": "Как называется школа волшебства в этой вселенной?", "expected_known": "yes"},
+  {"question": "Кто является директором Догвартс?", "expected_known": "yes"},
+  {"question": "Какие факультеты есть в Догвартс?", "expected_known": "yes"},
+  {"question": "Кто такой Гарольд Поттерман?", "expected_known": "yes"},
+  {"question": "Что такое воздушная игра?", "expected_known": "yes"},
+  {"question": "Кто основатели Догвартс?", "expected_known": "yes"},
+  {"question": "Что такое душехранитель?", "expected_known": "yes"},
+  {"question": "Что такое Волшебное ведомство?", "expected_known": "yes"},
+  {"question": "Кто такой Вольдемар Дарт?", "expected_known": "yes"},
+  {"question": "Что такое Камень мудрости?", "expected_known": "yes"},
+  {"question": "Что такое квантовая физика?", "expected_known": "no"},
+  {"question": "Расскажи о Наполеоне Бонапарте", "expected_known": "no"},
+  {"question": "Как готовить пиццу?", "expected_known": "no"},
+  {"question": "Кто такой Илон Маск?", "expected_known": "no"},
+  {"question": "Что такое блокчейн?", "expected_known": "no"}
+]

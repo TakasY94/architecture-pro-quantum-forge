@@ -1,0 +1,77 @@
+@startuml
+title RAG Index Update Automation (Cron + ChromaDB)
+
+skinparam shadowing false
+skinparam componentStyle rectangle
+skinparam wrapWidth 220
+skinparam maxMessageSize 220
+
+actor "Ops/Dev" as ops
+
+folder "Host filesystem" as host {
+  file "Knowledge Base\nknowledge_base/*.txt\n(../task2/knowledge_base/)" as kb
+  file "Terms Map\nterms_map.json" as terms_map
+  file "File State\nfile_state.json\n(hashes & mtimes)" as state_file
+  folder "Logs\nupdate_log.txt" as log_file
+  folder "Chroma persistent volume\n./chroma_db/" as chroma_data
+}
+
+node "Host System" as host_system {
+  component "cron (scheduler)\n(system crontab)" as cron
+  component "update_index.py\n(Indexer Script)" as script
+
+  component "Morphological Analyzer\npymorphy2" as morph
+  component "Term Replacer\n(replace_terms.py)" as replacer
+  component "Chunker\n(RecursiveCharacterTextSplitter)" as chunker
+  component "Embedding Model\nBAAI/bge-m3\n(SentenceTransformer)" as embedder
+  database "ChromaDB\n(PersistentClient)\n./chroma_db" as chroma
+}
+
+' --- Scheduling / Trigger
+ops --> cron : configure cron job\n(crontab -e)\n0 6 * * * python update_index.py
+cron --> script : runs on schedule\n(e.g., daily at 6:00)
+
+' --- Data flow
+kb --> script : scan directory\n(check file hashes)
+terms_map --> script : load term replacements
+script --> morph : morphological analysis\n(build word forms)
+morph --> script : forms_map
+script --> replacer : apply term replacements\nto document text
+replacer --> script : cleaned text
+script --> chunker : split text into chunks\n(chunk_size=1000, overlap=200)
+chunker --> script : text chunks[]
+script --> embedder : encode(chunks)\n(normalize_embeddings=True)
+embedder --> script : embeddings[]
+script --> chroma : upsert:\ndelete old chunks + add new\n(ids, documents, embeddings, metadatas)
+
+' --- Persistence
+chroma ..> chroma_data : persisted DB/index files
+script --> state_file : save file hashes & mtimes\n(update state after processing)
+script --> log_file : detailed logs\n(success/error messages)
+
+' --- Output
+script --> ops : console output\n(summary message)
+
+' --- Notes
+note right of script
+- Detect changes by MD5 hash of file content
+- IDs: {filename}_chunk_{index}
+- Upsert = delete old chunks for changed files + add new
+- Exit code: 0 (success), 1 (error)
+end note
+
+note left of cron
+Task execution:
+- Cron runs script directly on host
+- Schedule: configurable (e.g., daily)
+- On error: logs to update_log.txt + email (if configured)
+end note
+
+note bottom of embedder
+Embedding Model: BAAI/bge-m3
+- Multilingual support
+- High performance
+- Normalized embeddings
+end note
+
+@enduml

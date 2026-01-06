@@ -1,0 +1,5 @@
+langchain-text-splitters>=0.2.0
+sentence-transformers>=2.2.2
+chromadb>=0.4.24
+tqdm>=4.66.1
+pymorphy2>=0.9.1
