@@ -1,0 +1,5 @@
+.venv/
+.idea/
+task4/gigachat_credentials.py
+_pycache_
+chroma_db

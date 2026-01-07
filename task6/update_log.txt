@@ -1,0 +1,19 @@
+2026-01-05 11:24:48,504 - INFO - === Запуск обновления индекса ===
+2026-01-05 11:24:48,655 - INFO - Loading dictionaries from E:\IdeaProjects\architecture-pro-quantum-forge\.venv\Lib\site-packages\pymorphy2_dicts_ru\data
+2026-01-05 11:24:48,674 - INFO - format: 2.4, revision: 417127, updated: 2020-10-11T15:05:51.070345
+2026-01-05 11:24:48,702 - INFO - Нет новых или изменённых файлов. Обновление не требуется.
+2026-01-05 11:26:01,413 - INFO - === Запуск обновления индекса ===
+2026-01-05 11:26:01,563 - INFO - Loading dictionaries from E:\IdeaProjects\architecture-pro-quantum-forge\.venv\Lib\site-packages\pymorphy2_dicts_ru\data
+2026-01-05 11:26:01,584 - INFO - format: 2.4, revision: 417127, updated: 2020-10-11T15:05:51.070345
+2026-01-05 11:26:01,611 - INFO - Нет новых или изменённых файлов. Обновление не требуется.
+2026-01-05 11:26:13,544 - INFO - === Запуск обновления индекса ===
+2026-01-05 11:26:13,697 - INFO - Loading dictionaries from E:\IdeaProjects\architecture-pro-quantum-forge\.venv\Lib\site-packages\pymorphy2_dicts_ru\data
+2026-01-05 11:26:13,717 - INFO - format: 2.4, revision: 417127, updated: 2020-10-11T15:05:51.070345
+2026-01-05 11:26:13,740 - INFO - Новый или изменённый файл: Барсучий_дом.txt
+2026-01-05 11:26:13,745 - INFO - Use pytorch device_name: cpu
+2026-01-05 11:26:13,745 - INFO - Load pretrained SentenceTransformer: BAAI/bge-m3
+2026-01-05 11:26:19,504 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-05 11:26:19,658 - INFO - Load pretrained SentenceTransformer: BAAI/bge-m3
+2026-01-05 11:26:23,966 - INFO - Удалено 2 старых чанков для файла Барсучий_дом.txt
+2026-01-05 11:26:24,241 - INFO - Добавлено 3 новых чанков
+2026-01-05 11:26:24,243 - INFO - Обновление завершено успешно. Добавлено чанков: 3, удалено: 2, итого в индексе: 908. Время: 10.70 сек.
